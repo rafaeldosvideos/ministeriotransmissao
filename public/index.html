@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ministério de Transmissão</title>
+<meta name="description" content="Escala, equipes e instruções do ministério de transmissão.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/styles.css">
+<script>
+  // Aplica o tema salvo antes da primeira pintura, para não piscar.
+  try {
+    var t = localStorage.getItem("mt-tema");
+    if (t === "claro" || t === "escuro") document.documentElement.dataset.tema = t;
+  } catch (e) {}
+</script>
+</head>
+<body>
+
+<a class="pular-link" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="topo">
+  <div class="topo-interno">
+    <a class="marca" href="/" data-link>
+      <span class="marca-luz" aria-hidden="true"></span>
+      <span class="marca-texto">
+        <strong>Ministério de Transmissão</strong>
+        <small>Escala e organização da equipe</small>
+      </span>
+    </a>
+
+    <nav class="nav-principal" aria-label="Navegação principal">
+      <a href="/" data-link data-nav="geral">Geral</a>
+      <a href="/equipes" data-link data-nav="equipes">Equipes</a>
+      <a href="/instrucoes" data-link data-nav="instrucoes">Instruções</a>
+    </nav>
+
+    <div class="topo-acoes">
+      <button type="button" class="btn-icone" id="btn-tema" title="Alternar tema" aria-label="Alternar tema claro e escuro">
+        <svg class="icone-claro" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.2 12H2M22 12h-2.2M5.6 5.6 4 4M20 20l-1.6-1.6M18.4 5.6 20 4M4 20l1.6-1.6"/></svg>
+        <svg class="icone-escuro" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.4 8.4 0 1 0 10.2 10.2Z"/></svg>
+      </button>
+      <button type="button" class="btn btn-secundario" id="btn-editar">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 10V7.5a6 6 0 1 1 12 0V10"/><rect x="4" y="10" width="16" height="10.5" rx="2.2"/></svg>
+        <span>Editar</span>
+      </button>
+    </div>
+  </div>
+  <div class="barra-edicao" id="barra-edicao" hidden>
+    <span class="ponto-edicao" aria-hidden="true"></span>
+    Modo edição ativo — suas alterações ficam visíveis para todos.
+    <button type="button" class="link-sair" id="btn-sair">Sair do modo edição</button>
+  </div>
+</header>
+
+<main id="conteudo" class="conteudo" tabindex="-1">
+  <div class="carregando" role="status">
+    <span class="giro" aria-hidden="true"></span> Carregando…
+  </div>
+</main>
+
+<footer class="rodape">
+  <p>Ministério de Transmissão · escala mantida manualmente pela liderança da equipe.</p>
+</footer>
+
+<div id="modais"></div>
+<div id="avisos" class="avisos" aria-live="polite" aria-atomic="false"></div>
+
+<script src="/assets/app.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+# Copie para .dev.vars (que fica fora do git) para rodar localmente.
+# Em producao NAO use arquivo: rode `npx wrangler secret put ADMIN_PIN`.
+ADMIN_PIN="troque-por-um-pin"
+SESSION_SECRET="qualquer-string-longa-e-aleatoria-para-assinar-a-sessao"

@@ -1,0 +1,27 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "ministerio-transmissao",
+  "main": "src/worker.js",
+  "compatibility_date": "2026-08-31",
+
+  // O Worker roda primeiro apenas nas rotas de API.
+  // Todo o resto cai nos arquivos estaticos de ./public,
+  // e rotas do SPA (/equipes/grua, /instrucoes...) devolvem index.html.
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*"]
+  },
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "ministerio-transmissao",
+      // Preenchido pelo `npm run db:criar` (veja o README).
+      "database_id": "SUBSTITUA_PELO_ID_DO_D1"
+    }
+  ],
+
+  "observability": { "enabled": true }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "sistema-ministerio-transmissao",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sistema web do ministerio de transmissao — escala, equipes e instrucoes",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "db:criar": "wrangler d1 create ministerio-transmissao",
+    "db:migrar": "wrangler d1 execute ministerio-transmissao --remote --file=./migrations/0001_inicial.sql",
+    "db:migrar:local": "wrangler d1 execute ministerio-transmissao --local --file=./migrations/0001_inicial.sql",
+    "db:seed": "wrangler d1 execute ministerio-transmissao --remote --file=./migrations/0002_conteudo_inicial.sql",
+    "db:seed:local": "wrangler d1 execute ministerio-transmissao --local --file=./migrations/0002_conteudo_inicial.sql",
+    "pin": "wrangler secret put ADMIN_PIN"
+  },
+  "devDependencies": {
+    "wrangler": "^4.40.0"
+  }
+}
