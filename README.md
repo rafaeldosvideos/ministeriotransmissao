@@ -19,48 +19,33 @@ Não existe geração automática de escala.
 
 ## Subir pela primeira vez
 
-Precisa de uma conta Cloudflare e do Node instalado.
+O banco **já está criado e populado** na conta Cloudflare do projeto
+(`ministerio-transmissao`, id `8350669b-151b-4751-9131-f6c270e91f2f`, já no
+`wrangler.jsonc`). Os passos abaixo são só a publicação.
+
+### Opção A — pelo terminal
 
 ```bash
 npm install
-npx wrangler login
-```
-
-**1. Criar o banco**
-
-```bash
-npm run db:criar
-```
-
-O comando devolve um `database_id`. Cole ele em `wrangler.jsonc`, no lugar de
-`SUBSTITUA_PELO_ID_DO_D1`.
-
-**2. Criar as tabelas e o conteúdo inicial**
-
-```bash
-npm run db:migrar    # estrutura
-npm run db:seed      # as 5 equipes e os textos de partida
-```
-
-**3. Definir o PIN de edição**
-
-```bash
-npm run pin          # atalho para: wrangler secret put ADMIN_PIN
-```
-
-Ele pergunta o PIN no terminal. **O PIN não fica em nenhum arquivo do
-repositório** — fica guardado como secret na Cloudflare. Se quiser trocar
-depois, é só rodar o comando de novo.
-
-**4. Publicar**
-
-```bash
-npm run deploy
+npx wrangler login     # abre o navegador, você autoriza
+npm run deploy         # publica
+npm run pin            # define o PIN de edição (pergunta no terminal)
 ```
 
 O endereço `https://ministerio-transmissao.<sua-conta>.workers.dev` sai no
-terminal. Para usar domínio próprio, é em *Workers & Pages → seu worker →
-Settings → Domains & Routes*.
+terminal do `deploy`.
+
+### Opção B — só pelo navegador, com deploy automático a cada push
+
+1. [dash.cloudflare.com](https://dash.cloudflare.com) → **Workers & Pages** →
+   **Create** → **Import a repository** → escolha `ministeriotransmissao`.
+2. O nome do Worker precisa ser exatamente **`ministerio-transmissao`**
+   (tem que bater com o `name` do `wrangler.jsonc`, senão o build falha).
+3. Deploy.
+4. No Worker → **Settings** → **Variables and Secrets** → **Add** → tipo
+   **Secret**, nome `ADMIN_PIN`, valor = o PIN. Salvar e fazer um novo deploy.
+
+A partir daí, todo push no repositório publica sozinho.
 
 ## Rodar na sua máquina
 

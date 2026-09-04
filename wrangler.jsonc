@@ -18,8 +18,7 @@
     {
       "binding": "DB",
       "database_name": "ministerio-transmissao",
-      // Preenchido pelo `npm run db:criar` (veja o README).
-      "database_id": "SUBSTITUA_PELO_ID_DO_D1"
+      "database_id": "8350669b-151b-4751-9131-f6c270e91f2f"
     }
   ],
 
