@@ -19,11 +19,19 @@ Não existe geração automática de escala.
 
 ## Subir pela primeira vez
 
-O banco **já está criado e populado** na conta Cloudflare do projeto
-(`ministerio-transmissao`, id `8350669b-151b-4751-9131-f6c270e91f2f`, já no
-`wrangler.jsonc`). Os passos abaixo são só a publicação.
+### Jeito mais rápido — um clique
 
-### Opção A — pelo terminal
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/rafaeldosvideos/ministeriotransmissao)
+
+O botão copia o repositório para a sua conta, provisiona o que o projeto
+declara, configura o deploy automático a cada push e publica. Depois é só
+definir o `ADMIN_PIN` em **Settings → Variables and Secrets** do Worker.
+
+### Pelo terminal
+
+
+O banco `ministerio-transmissao` (id `8350669b-151b-4751-9131-f6c270e91f2f`)
+já está criado e populado, e o id já está no `wrangler.jsonc`.
 
 ```bash
 npm install
@@ -35,7 +43,7 @@ npm run pin            # define o PIN de edição (pergunta no terminal)
 O endereço `https://ministerio-transmissao.<sua-conta>.workers.dev` sai no
 terminal do `deploy`.
 
-### Opção B — só pelo navegador, com deploy automático a cada push
+### Pelo painel, sem terminal
 
 1. [dash.cloudflare.com](https://dash.cloudflare.com) → **Workers & Pages** →
    **Create** → **Import a repository** → escolha `ministeriotransmissao`.
